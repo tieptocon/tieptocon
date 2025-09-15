@@ -10,7 +10,7 @@
         body {
             margin: 0;
             min-height: 100vh;
-            background: #131313;
+            background: #17181c;
             font-family: 'VT323', monospace;
             display: flex;
             flex-direction: column;
@@ -38,24 +38,6 @@
             25% { opacity: 0.7;}
             28% { opacity: 0.9;}
             70% { opacity: 0.95;}
-        }
-        .glow-orb {
-            position: absolute;
-            width: 340px;
-            height: 340px;
-            background: radial-gradient(circle at 60% 40%, #e83d8f77 0%, #f9d92344 70%, #131313 100%);
-            border-radius: 50%;
-            left: 50%;
-            top: 36%;
-            transform: translate(-50%,-50%);
-            filter: blur(7px);
-            z-index: 0;
-            animation: orbmove 8s infinite alternate ease-in-out;
-        }
-        @keyframes orbmove {
-            0% { left: 49%; top:38%;}
-            50% { left:52%; top:42%;}
-            100% { left:47%; top:36%;}
         }
         .contacts {
             display: flex;
@@ -97,20 +79,35 @@
             font-size: 1.25rem;
             letter-spacing: 2px;
         }
-        /* Floating emoji effect */
-        .float-emoji {
+        /* Flying icon effect */
+        .flying-icon {
             position: fixed;
-            font-size: 2.2rem;
-            opacity: 0.45;
-            animation: floatemoji 8s linear infinite;
+            font-size: 2.4rem;
+            opacity: 0.72;
             pointer-events: none;
             z-index: 1;
-            filter: blur(0.5px);
+            filter: drop-shadow(0 0 8px #e83d8f66);
+            will-change: transform, opacity;
+            animation: flyicon 8s linear forwards;
         }
-        @keyframes floatemoji {
-            0% { transform: translateY(110vh) scale(1) rotate(0deg);}
-            95% {opacity:0.45;}
-            100% { transform: translateY(-10vh) scale(1.3) rotate(360deg); opacity:0;}
+        @keyframes flyicon {
+            0% {
+                transform: translateY(110vh) scale(1) rotate(0deg);
+                opacity: 0.82;
+            }
+            70% {
+                opacity: 0.72;
+            }
+            80% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.18) rotate(360deg);
+                opacity: 0;
+            }
         }
         /* Responsive */
         @media (max-width: 600px) {
@@ -121,7 +118,6 @@
     </style>
 </head>
 <body>
-    <div class="glow-orb"></div>
     <div class="neon">HELLO WORLD</div>
     <div class="contacts">
         <a class="contact-link" href="mailto:info@tieptocon.com" target="_blank">
@@ -137,22 +133,39 @@
             <i class="fab fa-telegram"></i> <span>Telegram</span>
         </a>
     </div>
-    <!-- Floating emoji (randomly scattered via JS) -->
+    <!-- Flying Font Awesome icons (animated via JS) -->
     <script>
-        const EMOJIS = ['✨','🦄','👾','💡','🚀','😎','🎉','🖤','💻','🌀','🔥','🌈'];
+        // Array of Font Awesome icon classes to randomly pick
+        const ICONS = [
+            'fa-github', 'fa-facebook', 'fa-telegram', 'fa-envelope',
+            'fa-code', 'fa-laptop-code', 'fa-terminal', 'fa-bolt', 
+            'fa-star', 'fa-globe', 'fa-cloud', 'fa-rocket', 'fa-user-astronaut',
+            'fa-lightbulb', 'fa-cube', 'fa-wand-magic-sparkles'
+        ];
         function random(min,max){ return Math.random()*(max-min)+min; }
-        function spawnEmoji() {
-            const emoji = document.createElement('div');
-            emoji.className = 'float-emoji';
-            emoji.style.left = random(0,90) + 'vw';
-            emoji.style.animationDuration = random(7,13) + 's';
-            emoji.style.fontSize = random(1.5,3.5) + 'rem';
-            emoji.innerText = EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
-            document.body.appendChild(emoji);
-            setTimeout(()=>emoji.remove(), 14000);
+        function spawnIcon() {
+            const icon = document.createElement('i');
+            icon.className = 'flying-icon fa-solid';
+            // Randomly decide between solid/brand icons
+            if (Math.random() > 0.5) {
+                icon.classList.add('fa-brands');
+            }
+            // Pick icon
+            const iconClass = ICONS[Math.floor(Math.random()*ICONS.length)];
+            icon.classList.add(iconClass);
+            // Random horizontal position
+            icon.style.left = random(5, 90) + 'vw';
+            // Random size and color
+            const size = random(1.5, 3.3);
+            icon.style.fontSize = size + 'rem';
+            const colors = ['#f9d923', '#e83d8f', '#82aaff', '#fff', '#43e97b'];
+            icon.style.color = colors[Math.floor(Math.random()*colors.length)];
+            icon.style.animationDuration = random(6.5,11) + 's';
+            document.body.appendChild(icon);
+            setTimeout(()=>icon.remove(), 12000);
         }
-        setInterval(spawnEmoji, 600);
-        for(let i=0;i<5;i++) spawnEmoji();
+        setInterval(spawnIcon, 420);
+        for(let i=0;i<7;i++) spawnIcon();
     </script>
 </body>
 </html>
