@@ -17,6 +17,7 @@
             justify-content: center;
             overflow: hidden;
             background: #0a0a1a; /* Màu nền tối làm nền tảng */
+            position: relative;
         }
         .container {
             width: 100%;
@@ -26,36 +27,61 @@
             align-items: center;
             justify-content: center;
             background: radial-gradient(circle at 50% 50%, #2a1a4b 0%, #0a1a2a 50%, #000 100%); /* Tím đậm */
-            animation: pulseBackground 1.8s infinite alternate ease-in-out; /* Đồng bộ với flicker */
-            transition: background 0.3s ease; /* Chuyển màu mượt mà */
+            animation: pulseBackground 6s infinite ease-in-out; /* Chuyển màu liên tục */
+            transition: background 0.5s ease; /* Chuyển màu mượt mà */
             position: relative;
             z-index: 1;
         }
         @keyframes pulseBackground {
-            0% {
+            0%, 100% {
                 background: radial-gradient(circle at 50% 50%, #2a1a4b 0%, #0a1a2a 50%, #000 100%); /* Tím đậm */
             }
-            50% {
-                background: radial-gradient(circle at 50% 50%, #1a2a44 0%, #0a1a2a 50%, #000 100%); /* Trung gian */
+            33% {
+                background: radial-gradient(circle at 50% 50%, #1f2a4b 0%, #0a1a2a 50%, #000 100%); /* Trung gian */
             }
-            100% {
+            66% {
                 background: radial-gradient(circle at 50% 50%, #1a3b5a 0%, #0a1a2a 50%, #000 100%); /* Xanh lam đậm */
             }
         }
+        .ripple {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent);
+            border-radius: 50%;
+            animation: rippleEffect 8s infinite ease-in-out;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes rippleEffect {
+            0% {
+                transform: scale(0) translate(0, 0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(3) translate(50px, -50px);
+                opacity: 0.2;
+            }
+            100% {
+                transform: scale(6) translate(100px, -100px);
+                opacity: 0;
+            }
+        }
         .neon {
-            font-size: 4.5rem;
+            font-size: 4.8rem;
             color: #e0f7fa;
             letter-spacing: 5px;
             position: relative;
             text-shadow:
                 0 0 10px #8b5cf6,
                 0 0 20px #8b5cf6,
-                0 0 30px #7dd3fc,
+                0 0 30px #c026d3,
                 0 0 50px #7dd3fc,
-                0 0 80px #6d28d9; /* Ánh sáng tím và cyan */
-            animation: flicker 1.8s infinite alternate; /* Hiệu ứng nháy gốc */
+                0 0 80px #6d28d9; /* Ánh sáng tím, magenta, cyan */
+            animation: flicker 1.8s infinite alternate, rotate3D 10s infinite linear; /* Nháy + xoay 3D */
             margin-bottom: 50px;
             z-index: 2;
+            transform: perspective(500px) rotateX(10deg) rotateY(10deg);
         }
         @keyframes flicker {
             0%, 100% { opacity: 1; }
@@ -65,6 +91,11 @@
             25% { opacity: 0.7; }
             28% { opacity: 0.9; }
             70% { opacity: 0.95; }
+        }
+        @keyframes rotate3D {
+            0% { transform: perspective(500px) rotateX(10deg) rotateY(10deg); }
+            50% { transform: perspective(500px) rotateX(-10deg) rotateY(-10deg); }
+            100% { transform: perspective(500px) rotateX(10deg) rotateY(10deg); }
         }
         .contacts {
             display: flex;
@@ -82,13 +113,20 @@
             padding: 15px 30px;
             border-radius: 50px;
             background: rgba(139, 92, 246, 0.15);
-            border: 2px solid #8b5cf666;
-            color: #8b5cf6;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #8b5cf6, #c026d3, #7dd3fc) 1;
+            color: #e0f7fa;
             box-shadow: 0 0 20px #8b5cf622;
             transition: all 0.4s ease;
             font-family: 'VT323', monospace;
             position: relative;
             overflow: hidden;
+            animation: borderGlow 3s infinite linear;
+        }
+        @keyframes borderGlow {
+            0% { border-image: linear-gradient(45deg, #8b5cf6, #c026d3, #7dd3fc) 1; }
+            50% { border-image: linear-gradient(45deg, #c026d3, #7dd3fc, #8b5cf6) 1; }
+            100% { border-image: linear-gradient(45deg, #8b5cf6, #c026d3, #7dd3fc) 1; }
         }
         .contact-link::after {
             content: '';
@@ -97,18 +135,22 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(192, 38, 211, 0.4), transparent);
             transition: 0.5s;
         }
         .contact-link:hover::after {
             left: 100%;
         }
         .contact-link:hover {
-            background: linear-gradient(45deg, #6d28d9, #7dd3fc);
+            background: linear-gradient(45deg, #6d28d9, #c026d3, #7dd3fc);
             color: #fff;
-            border-color: #7dd3fc;
-            transform: scale(1.1) rotate(-2deg);
-            box-shadow: 0 0 25px #7dd3fc88;
+            transform: scale(1.1) rotate(-2deg) translateY(-5px);
+            box-shadow: 0 0 30px #c026d388;
+            animation: vibrate 0.1s infinite;
+        }
+        @keyframes vibrate {
+            0%, 100% { transform: scale(1.1) rotate(-2deg) translateY(-5px); }
+            50% { transform: scale(1.1) rotate(-2deg) translateY(-5px) translateX(2px); }
         }
         .contact-link i {
             transition: color 0.4s ease;
@@ -126,9 +168,13 @@
             opacity: 0.8;
             pointer-events: none;
             z-index: 1;
-            filter: drop-shadow(0 0 8px #8b5cf666);
-            animation: flyicon 7s linear forwards;
+            animation: flyicon 7s linear forwards, glowIcon 2s infinite ease-in-out;
             will-change: transform, opacity;
+        }
+        @keyframes glowIcon {
+            0%, 100% { filter: drop-shadow(0 0 8px #8b5cf666); color: #8b5cf6; }
+            33% { filter: drop-shadow(0 0 12px #c026d366); color: #c026d3; }
+            66% { filter: drop-shadow(0 0 10px #7dd3fc66); color: #7dd3fc; }
         }
         @keyframes flyicon {
             0% {
@@ -144,11 +190,39 @@
                 opacity: 0;
             }
         }
+        .sparkle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: sparkleMove 5s linear forwards;
+            filter: blur(2px);
+            opacity: 0.7;
+        }
+        @keyframes sparkleMove {
+            0% {
+                transform: translate(var(--start-x), 100vh) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(var(--mid-x), 50vh) scale(1.2);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate(var(--end-x), -10vh) scale(0.8);
+                opacity: 0;
+            }
+        }
         @media (max-width: 600px) {
             .neon { font-size: 2.5rem; }
             .contacts { flex-direction: column; gap: 20px; }
             .contact-link { font-size: 1.3rem; padding: 10px 15px; }
             .contact-link span { font-size: 1rem; }
+            .sparkle { width: 4px; height: 4px; }
+            .ripple { width: 100px; height: 100px; }
         }
     </style>
 </head>
@@ -189,14 +263,37 @@
             icon.style.left = random(10, 80) + 'vw';
             const size = random(1.8, 3.5);
             icon.style.fontSize = size + 'rem';
-            const colors = ['#8b5cf6', '#7dd3fc', '#22d3ee', '#6d28d9', '#38bdf8']; /* Tím và xanh lam */
-            icon.style.color = colors[Math.floor(Math.random() * colors.length)];
             icon.style.animationDuration = random(6, 9) + 's';
             document.body.appendChild(icon);
             setTimeout(() => icon.remove(), 9000);
         }
+        function spawnSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            const colors = ['#8b5cf6', '#7dd3fc', '#22d3ee', '#c026d3'];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.left = random(0, 100) + 'vw';
+            sparkle.style.setProperty('--start-x', random(-20, 20) + 'vw');
+            sparkle.style.setProperty('--mid-x', random(-10, 10) + 'vw');
+            sparkle.style.setProperty('--end-x', random(-20, 20) + 'vw');
+            sparkle.style.animationDuration = random(4, 6) + 's';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 6000);
+        }
+        function spawnRipple() {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = random(0, 80) + 'vw';
+            ripple.style.top = random(0, 80) + 'vh';
+            document.body.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 8000);
+        }
         setInterval(spawnIcon, 350);
+        setInterval(spawnSparkle, 200);
+        setInterval(spawnRipple, 2000);
         for (let i = 0; i < 8; i++) spawnIcon();
+        for (let i = 0; i < 10; i++) spawnSparkle();
+        for (let i = 0; i < 3; i++) spawnRipple();
     </script>
 </body>
 </html>
