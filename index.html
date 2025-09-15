@@ -10,7 +10,6 @@
         body {
             margin: 0;
             min-height: 100vh;
-            background: #17181c;
             font-family: 'VT323', monospace;
             display: flex;
             flex-direction: column;
@@ -18,26 +17,39 @@
             justify-content: center;
             overflow: hidden;
         }
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #1e3a8a 0%, #0d1b2a 50%, #000 100%); /* Nền tĩnh giống con mắt */
+            z-index: 1;
+        }
         .neon {
             font-size: 4.2rem;
-            color: #fff;
+            color: #e0f7fa;
             letter-spacing: 4px;
             position: relative;
             text-shadow:
-                0 0 7px #f9d923, 0 0 14px #f9d923, 0 0 21px #e83d8f,
-                0 0 42px #e83d8f, 0 0 82px #e83d8f;
+                0 0 10px #22d3ee,
+                0 0 20px #22d3ee,
+                0 0 30px #06b6d4,
+                0 0 50px #06b6d4,
+                0 0 80px #0e7490; /* Ánh sáng cyan giống đồng tử */
             animation: flicker 1.8s infinite alternate;
             margin-bottom: 48px;
             z-index: 2;
         }
         @keyframes flicker {
-            0%, 100% { opacity: 1;}
-            12% { opacity: 0.6;}
-            18% { opacity: 0.85;}
-            22% { opacity: 0.2;}
-            25% { opacity: 0.7;}
-            28% { opacity: 0.9;}
-            70% { opacity: 0.95;}
+            0%, 100% { opacity: 1; }
+            12% { opacity: 0.6; }
+            18% { opacity: 0.85; }
+            22% { opacity: 0.2; }
+            25% { opacity: 0.7; }
+            28% { opacity: 0.9; }
+            70% { opacity: 0.95; }
         }
         .contacts {
             display: flex;
@@ -53,40 +65,40 @@
             text-decoration: none;
             font-size: 2.1rem;
             padding: 14px 26px;
-            border-radius: 17px;
-            background: rgba(255,255,255,0.06);
-            border: 2.2px solid #e83d8f66;
-            color: #f9d923;
-            box-shadow: 0 0 18px #e83d8f22;
-            transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+            border-radius: 50px;
+            background: rgba(34, 211, 238, 0.1);
+            border: 2.2px solid #22d3ee66;
+            color: #22d3ee;
+            box-shadow: 0 0 18px #22d3ee22;
+            transition: background 0.3s ease, color 0.3s ease, border 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             font-family: 'VT323', monospace;
             position: relative;
             overflow: hidden;
         }
         .contact-link i {
-            transition: color 0.2s;
+            transition: color 0.3s ease;
         }
         .contact-link:hover {
-            background: #e83d8f;
+            background: linear-gradient(45deg, #1e3a8a, #22d3ee); /* Gradient hover đẹp mắt */
             color: #fff;
-            border-color: #fff;
+            border-color: #67e8f9;
             transform: scale(1.09) rotate(-2deg);
+            box-shadow: 0 0 20px #67e8f966; /* Bóng đổ mạnh hơn khi hover */
         }
         .contact-link:hover i {
-            color: #f9d923;
+            color: #fef08a;
         }
         .contact-link span {
             font-size: 1.25rem;
             letter-spacing: 2px;
         }
-        /* Flying icon effect */
         .flying-icon {
             position: fixed;
             font-size: 2.4rem;
             opacity: 0.72;
             pointer-events: none;
             z-index: 1;
-            filter: drop-shadow(0 0 8px #e83d8f66);
+            filter: drop-shadow(0 0 8px #22d3ee66);
             will-change: transform, opacity;
             animation: flyicon 8s linear forwards;
         }
@@ -109,63 +121,58 @@
                 opacity: 0;
             }
         }
-        /* Responsive */
         @media (max-width: 600px) {
-            .neon { font-size: 2.1rem;}
-            .contacts { flex-direction: column; gap: 18px;}
-            .contact-link { font-size: 1.2rem; padding: 9px 12px;}
+            .neon { font-size: 2.1rem; }
+            .contacts { flex-direction: column; gap: 18px; }
+            .contact-link { font-size: 1.2rem; padding: 9px 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="neon">HELLO WORLD</div>
-    <div class="contacts">
-        <a class="contact-link" href="mailto:info@tieptocon.com" target="_blank">
-            <i class="fas fa-envelope"></i> <span>Email</span>
-        </a>
-        <a class="contact-link" href="https://github.com/tieptocon" target="_blank">
-            <i class="fab fa-github"></i> <span>GitHub</span>
-        </a>
-        <a class="contact-link" href="https://facebook.com/tiep.to.con" target="_blank">
-            <i class="fab fa-facebook"></i> <span>Facebook</span>
-        </a>
-        <a class="contact-link" href="https://t.me/tieptocon" target="_blank">
-            <i class="fab fa-telegram"></i> <span>Telegram</span>
-        </a>
+    <div class="container">
+        <div class="neon">HELLO WORLD</div>
+        <div class="contacts">
+            <a class="contact-link" href="mailto:info@tieptocon.com" target="_blank">
+                <i class="fas fa-envelope"></i> <span>Email</span>
+            </a>
+            <a class="contact-link" href="https://github.com/tieptocon" target="_blank">
+                <i class="fab fa-github"></i> <span>GitHub</span>
+            </a>
+            <a class="contact-link" href="https://facebook.com/tiep.to.con" target="_blank">
+                <i class="fab fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a class="contact-link" href="https://t.me/tieptocon" target="_blank">
+                <i class="fab fa-telegram"></i> <span>Telegram</span>
+            </a>
+        </div>
     </div>
-    <!-- Flying Font Awesome icons (animated via JS) -->
     <script>
-        // Array of Font Awesome icon classes to randomly pick
         const ICONS = [
             'fa-github', 'fa-facebook', 'fa-telegram', 'fa-envelope',
             'fa-code', 'fa-laptop-code', 'fa-terminal', 'fa-bolt', 
             'fa-star', 'fa-globe', 'fa-cloud', 'fa-rocket', 'fa-user-astronaut',
             'fa-lightbulb', 'fa-cube', 'fa-wand-magic-sparkles'
         ];
-        function random(min,max){ return Math.random()*(max-min)+min; }
+        function random(min, max) { return Math.random() * (max - min) + min; }
         function spawnIcon() {
             const icon = document.createElement('i');
             icon.className = 'flying-icon fa-solid';
-            // Randomly decide between solid/brand icons
             if (Math.random() > 0.5) {
                 icon.classList.add('fa-brands');
             }
-            // Pick icon
-            const iconClass = ICONS[Math.floor(Math.random()*ICONS.length)];
+            const iconClass = ICONS[Math.floor(Math.random() * ICONS.length)];
             icon.classList.add(iconClass);
-            // Random horizontal position
             icon.style.left = random(5, 90) + 'vw';
-            // Random size and color
             const size = random(1.5, 3.3);
             icon.style.fontSize = size + 'rem';
-            const colors = ['#f9d923', '#e83d8f', '#82aaff', '#fff', '#43e97b'];
-            icon.style.color = colors[Math.floor(Math.random()*colors.length)];
-            icon.style.animationDuration = random(6.5,11) + 's';
+            const colors = ['#22d3ee', '#06b6d4', '#60a5fa', '#e0f7fa', '#43e97b']; /* Màu sắc phù hợp với chủ đề con mắt */
+            icon.style.color = colors[Math.floor(Math.random() * colors.length)];
+            icon.style.animationDuration = random(6.5, 11) + 's';
             document.body.appendChild(icon);
-            setTimeout(()=>icon.remove(), 12000);
+            setTimeout(() => icon.remove(), 12000);
         }
         setInterval(spawnIcon, 420);
-        for(let i=0;i<7;i++) spawnIcon();
+        for (let i = 0; i < 7; i++) spawnIcon();
     </script>
 </body>
 </html>
