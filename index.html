@@ -3,108 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chuyên Nghiệp</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>TIEPTOCON - Lập trình viên</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: #f8fafc;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            background: #181a20;
             margin: 0;
             padding: 0;
-            color: #222;
+            color: #e0e0e0;
         }
         header {
-            background: #1a237e;
-            color: #fff;
-            padding: 24px 0 16px 0;
+            background: #21232a;
+            color: #ffcb6b;
+            padding: 30px 0 16px 0;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+            border-bottom: 2px solid #2d2f36;
+            box-shadow: 0 2px 16px rgba(30,32,38,0.10);
         }
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             letter-spacing: 2px;
+            font-weight: 700;
         }
         nav {
-            margin-top: 12px;
+            margin-top: 14px;
         }
         nav a {
-            color: #fff;
+            color: #82aaff;
             text-decoration: none;
             margin: 0 18px;
-            font-weight: 500;
+            font-weight: 700;
+            font-size: 1.1rem;
             transition: color 0.2s;
         }
         nav a:hover {
-            color: #ffd600;
+            color: #ffcb6b;
         }
         .hero {
-            background: linear-gradient(90deg, #3949ab 60%, #ffd600 100%);
-            color: #fff;
-            padding: 60px 0 40px 0;
+            background: linear-gradient(90deg, #21232a 65%, #222b42 100%);
+            color: #ffcb6b;
+            padding: 48px 0 32px 0;
             text-align: center;
         }
         .hero h2 {
-            font-size: 2.2rem;
-            margin-bottom: 18px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 36px 32px;
-            border-radius: 12px;
-            box-shadow: 0 2px 16px rgba(60,60,60,0.08);
-        }
-        .section-title {
-            color: #1a237e;
-            font-size: 1.5rem;
-            margin-bottom: 18px;
+            font-size: 2.1rem;
+            margin-bottom: 12px;
             font-weight: 700;
         }
-        .services {
+        .hero p {
+            font-size: 1.16rem;
+            margin-bottom: 0;
+            color: #b2ccd6;
+        }
+        .container {
+            max-width: 850px;
+            margin: 36px auto;
+            background: #22232a;
+            padding: 32px 28px;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(30,32,38,0.10);
+        }
+        .section-title {
+            color: #82aaff;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+            border-left: 4px solid #ffcb6b;
+            padding-left: 10px;
+        }
+        .about-me {
+            background: #262837;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            color: #b2ccd6;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .skills, .projects {
+            margin-bottom: 18px;
+        }
+        .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 24px;
-            justify-content: center;
+            gap: 14px;
         }
-        .service {
-            background: #f1f8e9;
-            border-radius: 8px;
-            padding: 24px 18px;
-            flex: 1 1 220px;
-            min-width: 220px;
-            max-width: 280px;
-            box-shadow: 0 1px 6px rgba(60,60,60,0.06);
-            text-align: center;
-        }
-        .service h3 {
-            color: #3949ab;
-            margin-bottom: 10px;
-        }
-        .service p {
-            color: #444;
+        .skill {
+            background: #292d3e;
+            color: #89ddff;
+            border-radius: 4px;
+            padding: 7px 14px;
             font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 1px 6px rgba(30,32,38,0.10);
+        }
+        .projects-list {
+            list-style: none;
+            padding: 0;
+        }
+        .projects-list li {
+            margin-bottom: 10px;
+            background: #262837;
+            border-radius: 6px;
+            padding: 10px 14px;
+        }
+        .projects-list a {
+            color: #ffcb6b;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .projects-list a:hover {
+            text-decoration: underline;
+        }
+        .code-sample {
+            background: #23272e;
+            color: #e0e0e0;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 1rem;
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            overflow-x: auto;
+            margin-bottom: 18px;
         }
         footer {
-            background: #222;
-            color: #fff;
+            background: #1a1b21;
+            color: #b2ccd6;
             text-align: center;
-            padding: 18px 0;
-            margin-top: 40px;
+            padding: 16px 0;
+            margin-top: 38px;
             font-size: 1rem;
+            border-top: 2px solid #2d2f36;
         }
         @media (max-width: 700px) {
             .container {
-                padding: 18px 6px;
+                padding: 14px 4px;
             }
-            .services {
+            .skills-list {
                 flex-direction: column;
-                gap: 12px;
+                gap: 8px;
             }
         }
     </style>
@@ -113,38 +151,66 @@
     <header>
         <h1>TIEPTOCON</h1>
         <nav>
-            <a href="#gioithieu">Giới thiệu</a>
-            <a href="#dichvu">Dịch vụ</a>
-            <a href="#lienhe">Liên hệ</a>
+            <a href="#about">Giới thiệu</a>
+            <a href="#skills">Kỹ năng</a>
+            <a href="#projects">Dự án</a>
+            <a href="#contact">Liên hệ</a>
         </nav>
     </header>
     <section class="hero">
-        <h2>Chào mừng đến với TIEPTOCON</h2>
-        <p>Giải pháp công nghệ hiện đại, sáng tạo và chuyên nghiệp cho doanh nghiệp của bạn.</p>
+        <h2>Lập trình viên & Nhà phát triển phần mềm</h2>
+        <p>Xây dựng giải pháp thực tế, tối ưu và sáng tạo trên nền tảng công nghệ hiện đại.</p>
     </section>
-    <div class="container" id="gioithieu">
-        <div class="section-title">Giới thiệu</div>
-        <p>TIEPTOCON là đơn vị cung cấp các giải pháp công nghệ thông tin toàn diện, giúp doanh nghiệp chuyển đổi số hiệu quả, tối ưu vận hành và nâng cao năng lực cạnh tranh.</p>
-    </div>
-    <div class="container" id="dichvu">
-        <div class="section-title">Dịch vụ của chúng tôi</div>
-        <div class="services">
-            <div class="service">
-                <h3>Phát triển phần mềm</h3>
-                <p>Xây dựng ứng dụng web, mobile, hệ thống quản lý theo yêu cầu.</p>
-            </div>
-            <div class="service">
-                <h3>Tư vấn chuyển đổi số</h3>
-                <p>Đồng hành cùng doanh nghiệp trong quá trình chuyển đổi số toàn diện.</p>
-            </div>
-            <div class="service">
-                <h3>Hạ tầng & Bảo mật</h3>
-                <p>Triển khai hệ thống máy chủ, cloud, bảo mật dữ liệu và an ninh mạng.</p>
-            </div>
+    <div class="container" id="about">
+        <div class="section-title">👨‍💻 Giới thiệu</div>
+        <div class="about-me">
+            Xin chào! Mình là <b>TIEPTOCON</b> - lập trình viên đam mê sáng tạo, yêu thích công nghệ, chuyên phát triển web, ứng dụng và giải pháp phần mềm tuỳ biến. Luôn hướng tới code sạch, tối ưu, bảo mật và dễ bảo trì.
+        </div>
+        <div class="code-sample">
+<pre><code>// Một đoạn code mẫu - Tính số Fibonacci trong JavaScript
+function fibonacci(n) {
+    if (n &lt;= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+console.log(fibonacci(10)); // 55
+</code></pre>
         </div>
     </div>
-    <footer id="lienhe">
-        &copy; 2025 TIEPTOCON. Liên hệ: info@tieptocon.com
+    <div class="container" id="skills">
+        <div class="section-title">🛠️ Kỹ năng</div>
+        <div class="skills-list">
+            <div class="skill">JavaScript/TypeScript</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">ReactJS</div>
+            <div class="skill">HTML/CSS</div>
+            <div class="skill">Python</div>
+            <div class="skill">MySQL/PostgreSQL</div>
+            <div class="skill">REST API</div>
+            <div class="skill">Git/GitHub</div>
+            <div class="skill">AWS/Cloud</div>
+            <div class="skill">Linux</div>
+        </div>
+    </div>
+    <div class="container" id="projects">
+        <div class="section-title">🚀 Dự án tiêu biểu</div>
+        <ul class="projects-list">
+            <li>
+                <a href="https://github.com/tieptocon/tieptocon" target="_blank">tieptocon/tieptocon</a> - Trang cá nhân, portfolio lập trình viên open-source.
+            </li>
+            <li>
+                <a href="https://github.com/tieptocon" target="_blank">Các dự án trên GitHub</a> - Tham khảo thêm các sản phẩm & đóng góp khác.
+            </li>
+        </ul>
+    </div>
+    <div class="container" id="contact">
+        <div class="section-title">📬 Liên hệ</div>
+        <div class="about-me">
+            Email: <a href="mailto:info@tieptocon.com" style="color:#82aaff;">info@tieptocon.com</a><br>
+            GitHub: <a href="https://github.com/tieptocon" target="_blank" style="color:#82aaff;">github.com/tieptocon</a>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 TIEPTOCON. <span style="color:#ffcb6b;">Code. Build. Inspire.</span>
     </footer>
 </body>
 </html>
