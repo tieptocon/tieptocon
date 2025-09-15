@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chuyên Nghiệp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #f8fafc;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+        header {
+            background: #1a237e;
+            color: #fff;
+            padding: 24px 0 16px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(26,35,126,0.08);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        nav {
+            margin-top: 12px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #ffd600;
+        }
+        .hero {
+            background: linear-gradient(90deg, #3949ab 60%, #ffd600 100%);
+            color: #fff;
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 18px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 36px 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(60,60,60,0.08);
+        }
+        .section-title {
+            color: #1a237e;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+        .service {
+            background: #f1f8e9;
+            border-radius: 8px;
+            padding: 24px 18px;
+            flex: 1 1 220px;
+            min-width: 220px;
+            max-width: 280px;
+            box-shadow: 0 1px 6px rgba(60,60,60,0.06);
+            text-align: center;
+        }
+        .service h3 {
+            color: #3949ab;
+            margin-bottom: 10px;
+        }
+        .service p {
+            color: #444;
+            font-size: 1rem;
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0;
+            margin-top: 40px;
+            font-size: 1rem;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 18px 6px;
+            }
+            .services {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TIEPTOCON</h1>
+        <nav>
+            <a href="#gioithieu">Giới thiệu</a>
+            <a href="#dichvu">Dịch vụ</a>
+            <a href="#lienhe">Liên hệ</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <h2>Chào mừng đến với TIEPTOCON</h2>
+        <p>Giải pháp công nghệ hiện đại, sáng tạo và chuyên nghiệp cho doanh nghiệp của bạn.</p>
+    </section>
+    <div class="container" id="gioithieu">
+        <div class="section-title">Giới thiệu</div>
+        <p>TIEPTOCON là đơn vị cung cấp các giải pháp công nghệ thông tin toàn diện, giúp doanh nghiệp chuyển đổi số hiệu quả, tối ưu vận hành và nâng cao năng lực cạnh tranh.</p>
+    </div>
+    <div class="container" id="dichvu">
+        <div class="section-title">Dịch vụ của chúng tôi</div>
+        <div class="services">
+            <div class="service">
+                <h3>Phát triển phần mềm</h3>
+                <p>Xây dựng ứng dụng web, mobile, hệ thống quản lý theo yêu cầu.</p>
+            </div>
+            <div class="service">
+                <h3>Tư vấn chuyển đổi số</h3>
+                <p>Đồng hành cùng doanh nghiệp trong quá trình chuyển đổi số toàn diện.</p>
+            </div>
+            <div class="service">
+                <h3>Hạ tầng & Bảo mật</h3>
+                <p>Triển khai hệ thống máy chủ, cloud, bảo mật dữ liệu và an ninh mạng.</p>
+            </div>
+        </div>
+    </div>
+    <footer id="lienhe">
+        &copy; 2025 TIEPTOCON. Liên hệ: info@tieptocon.com
+    </footer>
+</body>
+</html>
